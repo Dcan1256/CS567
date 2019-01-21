@@ -1,0 +1,14 @@
+---
+title: "Topics of Comp Graph"
+author: "Necdet Dogancan Yormaz"
+date: "January 21, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## First week's RMD
+### First Week's RMD modified, and HTML added
+### https://github.com/Dcan1256/CS567.git
