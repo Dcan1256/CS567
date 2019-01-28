@@ -1,0 +1,83 @@
+---
+title: "Topics of Comp Graph Assn2"
+author: "Necdet Dogancan Yormaz"
+date: "January 27, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Sequence of Numbers===========================================
+1:15
+pi:10
+seq(1,25)
+seq(0,100, by = 5)
+seq(0, 10, by = 0.5)
+rep(1, times = 20)
+my_seq <- seq(5, 10, length = 30)
+length(my_seq)
+seq(along.with = my_seq
+seq_along(my_seq)
+
+##Vectors========================================================
+### quarter scores of Wasington Wizards vs San Antonio Spurs
+### link:https://www.google.com/search?q=nba&rlz=1C1CHBF_enUS821US821&oq=nba&aqs=chrome..69i57j0l5.6954j0j7&sourceid=chrome&ie=UTF-8#sie=m;/g/11g2l5dx6s;3;/m/05jvx;tb1;fp;1;;
+quarters <- c("Team", "1", "2", "3", "4")
+is.vector(quarters)
+length(quarters)
+scores_WWizards <- c("W.Wizards", "26", "43", "17", "33")
+is.vector(scores_WWizards)
+length(scores_WWizards)
+scores_SASpurs <- c("SA.Spurs", "36", "34", "29", "33")
+is.vector(scores_SASpurs)
+length(scores_SASpurs)
+names(scores_WWizards)<- quarters
+names(scores_SASpurs)<- quarters
+
+##Missing Values=================================================
+is.na(x) ### returns TRUE becuse our X's value is missing
+is.na(quarters)
+is.nan(quarters)
+is.na(scores_WWizards)
+is.nan(scores_WWizards)
+is.na(scores_SASpurs)
+is.nan(scores_SASpurs)
+###calculating mean  of scores without NA values
+mean(scores_WWizards, na.rm=TRUE)
+mean(scores_SASpurs, na.rm=TRUE)
+
+##Subsetting Vectors=============================================
+score_WWizards <- c(26, 43, 17, 33)
+###1st and 2nd quarter scores for Washington Wizards
+score_firsthalf <- score_WWizards[c(1,2)]
+###3rd and 4th quarter scores for Washington Wizards
+score_secondhalf <- score_WWizards[c(3,4)]
+###1st and 4th quarter scores for Washington Wizards
+score_firstnlast <- score_WWizards[c(1,4)]
+###2nd and 3rd quarter scores for Washington Wizards
+score_2ndn3rd <- score_WWizards[c(2,3)]
+score_SASpurs <- c(36, 34, 29, 33)
+###quarter scores for San Antonio Spurs excluding 4th quarter
+score_SASpurs[-4]
+###quarter scores for San Antonio Spurs excluding 4th and 2nd quarter
+score_SASpurs[-2]
+test <- c(1, 2, 3, 4)
+test[c(FALSE, TRUE, FALSE, TURE)]
+
+##Matrices and Data frame=========================================
+m<-matrix(nrow=2, ncol=3)
+n<-matrix(0:5nrow=2, ncol=3)
+
+testv <- 10;20
+dim(testv) <- c(2, 5)
+a <- 1:5
+b <- 16;20
+cbind(a, b)
+rbind(a, b)
+
+
+players <- data.frame (Number 1:5, name =c("a", "b", "c", "d", "e"))
+nrow(players)
+ncol(players)
