@@ -1,0 +1,31 @@
+---
+title: "Assn3"
+author: "Necdet Dogancan Yormaz"
+date: "February 4, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#This chunk will take cvs file and initialize it in data frame than calculate the mean of each collum 
+##Reading data
+data1<-read.csv(file.choose(), header=TRUE)
+## initializing first and second collums of our dataframe into 2 vector called firstcollum and secondcollum
+firstcollum <- data1[1]
+secondcollum <-data1[2]
+## Creating the method for calculating the mean of the each collum 
+collummean <- function(x){
+    nc<-ncol(x)
+    means<-numeric(nc)
+    for(i in seq_along(x)){
+        means[i]<-mean(x[, i])
+    }
+    means
+}
+## results of first 2 collums
+collummean(firstcollum)
+collummean(secondcollum)
+## for all collums
+collummean(data1)
