@@ -1,0 +1,21 @@
+---
+title: "assn4"
+author: "Necdet Dogancan Yormaz"
+date: "February 13, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#We install the "rvest" package to scrape data:
+install.packages("rvest")
+
+library("rvest")
+## Will read the data from the web site (Hall of Fame Weekend Cicago Bears - Baltimore Ravens Game)
+orgdata <- read_html( "http://www.espn.com/nfl/boxscore?gameId=401029218")
+## Creating nodes and this nodes will contain the scores
+node <- html_node(orgdata,"table")
+## Adding our node into DataFrame
+dataframe <- html_table(node)
+dataframe
