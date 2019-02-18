@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+author: "Necdet Dogancan Yormaz"
+date: "February 17, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#We install the "rvest" package to scrape data:
+install.packages("rvest")
+
+library("rvest")
+## Will read the data from the web site (https://www.calendar-365.com/holidays/2019.html - 2019 Holiday Calendar)
+orgdata <- read_html( "https://www.calendar-365.com/holidays/2019.html")
+## Creating nodes and this nodes will contain the scores
+node <- html_node(orgdata,"table")
+## Adding our node into DataFrame
+dataframe <- html_table(node)
+## For instance we are going to use Belly Laugh Day 2019 which is stored in 3rd row in our data frame and also first collum in our data frame will contain month and day formatted like ("Month day"")
+dataframe[3,1]
+## d value is the date we are using
+d<-paste(dataframe[3,1],"2019" )
+d
+## today's date "Month day Year" format
+today <- Sys.Date()
+## td value is the todays date
+td<-format(today, format="%B %d %Y")
+td
+## calculating the value of days between these two dates (the holiday we are looking for - today)
+diff=as.Date(strptime(d, "%B %d %Y"))-as.Date(strptime(td, "%B %d %Y"))
+diffNum=as.numeric(diff)
+print(diff);
