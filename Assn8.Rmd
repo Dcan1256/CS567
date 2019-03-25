@@ -1,0 +1,45 @@
+---
+title: "Assn8"
+author: "Necdet Dogancan Yormaz"
+date: "March 25, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+require("datasets")
+data("iris") # load Iris Dataset
+str(iris) #view structure of dataset
+## I tried to use some other data from web but I coulnd't able to manage with that data so I used iris data which is predefined data in RStudio
+#view statistical summary of dataset
+summary(iris) 
+#view top  rows of dataset
+head(iris) 
+#Starting to pre-processing
+iris.new<- iris[,c(1,2,3,4)]
+iris.class<- iris[,"Species"]
+head(iris.new)
+
+head(iris.class)
+#Nomalizing th dataset
+normalize <- function(x){
+  return ((x-min(x))/(max(x)-min(x)))
+}
+
+iris.new$Sepal.Length<- normalize(iris.new$Sepal.Length)
+iris.new$Sepal.Width<- normalize(iris.new$Sepal.Width)
+iris.new$Petal.Length<- normalize(iris.new$Petal.Length)
+iris.new$Petal.Width<- normalize(iris.new$Petal.Width)
+head(iris.new)
+#aplly k-means algorithm with no. of centroids(k)=3
+result<- kmeans(iris.new,3) 
+# gives no. of records in each cluster
+result$size 
+# gives value of cluster center datapoint value(3 centers for k=3)
+result$centers 
+#gives cluster vector showing the custer where each record falls
+result$cluster 
+# Plot to see how Sepal.Length and Sepal.Width data points have been distributed in clusters
+par(mfrow=c(2,2), mar=c(5,4,2,2))
+plot(iris.new[c(1,2)], col=result$cluster)
