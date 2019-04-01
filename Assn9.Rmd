@@ -1,0 +1,39 @@
+---
+title: "Assn9"
+author: "Necdet Dogancan Yormaz"
+date: "March 31, 2019"
+output: html_document
+---
+
+
+```{r}
+library(ggplot2)
+getwd()
+setwd("C:/Users/Dogancan/Desktop")
+
+data1 <- read.csv("drink.csv" )
+
+
+data1 <- data1[, 1:3]
+
+
+y <- data1$country ; 
+x <- data1$spirit_servings;
+n<- length(y)
+fit <- lm(y~x)
+e <- resid(fit)
+yhat<-predict(fit)
+
+
+
+plot(data1$country, data1$spirit_servings,
+     x <-data1$country,
+     xlab = "Contries",
+     ylab = "spirit_servings",
+     bg="lightblue",
+      col="black", cex=2, pch=21, frame=FALSE)
+abline(h=0, lwd=2)
+for(i in 1:n)
+  lines(c(data1$country[i],data1$country[i]),c(data1$spirit_servings[i],0),col="red",lwd=2)
+```
+
